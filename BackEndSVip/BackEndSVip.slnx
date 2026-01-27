@@ -1,3 +1,5 @@
 <Solution>
   <Project Path="BackEndSVip/BackEndSVip.csproj" />
+  <Project Path="BusinessLayer/BusinessLayer.csproj" Id="5658b08f-17ae-494c-88a6-190e8ace10e3" />
+  <Project Path="DataAccessLayer/DataAccessLayer.csproj" Id="801f904d-f18f-49ed-b409-e3a81913c1f9" />
 </Solution>
