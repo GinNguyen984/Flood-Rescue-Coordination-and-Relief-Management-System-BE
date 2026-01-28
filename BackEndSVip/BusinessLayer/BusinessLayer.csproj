@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <Folder Include="IService\" />
+    <Folder Include="Mapper\" />
     <Folder Include="Utils\" />
     <Folder Include="Service\" />
   </ItemGroup>
