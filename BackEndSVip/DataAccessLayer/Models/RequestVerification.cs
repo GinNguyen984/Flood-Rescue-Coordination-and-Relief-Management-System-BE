@@ -7,9 +7,9 @@ public partial class RequestVerification
 {
     public int VerificationId { get; set; }
 
-    public int RescueRequestId { get; set; }
+    public int? RescueRequestId { get; set; }
 
-    public int VerifiedBy { get; set; }
+    public int? VerifiedBy { get; set; }
 
     public string? VerificationStatus { get; set; }
 
@@ -17,7 +17,7 @@ public partial class RequestVerification
 
     public string? Note { get; set; }
 
-    public virtual RescueRequest RescueRequest { get; set; } = null!;
+    public virtual RescueRequest? RescueRequest { get; set; }
 
-    public virtual User VerifiedByNavigation { get; set; } = null!;
+    public virtual AppUser? VerifiedByNavigation { get; set; }
 }

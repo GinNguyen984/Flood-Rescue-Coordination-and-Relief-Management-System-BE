@@ -13,5 +13,5 @@ public partial class RescueTeamMember
 
     public virtual RescueTeam RescueTeam { get; set; } = null!;
 
-    public virtual User User { get; set; } = null!;
+    public virtual AppUser User { get; set; } = null!;
 }

@@ -11,9 +11,9 @@ public partial class ReliefWarehouse
 
     public string? LocationDescription { get; set; }
 
-    public int AreaId { get; set; }
+    public int? AreaId { get; set; }
 
-    public virtual GeographicArea Area { get; set; } = null!;
+    public virtual GeographicArea? Area { get; set; }
 
     public virtual ICollection<InventoryTransaction> InventoryTransactions { get; set; } = new List<InventoryTransaction>();
 

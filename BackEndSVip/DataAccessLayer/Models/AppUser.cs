@@ -3,23 +3,27 @@ using System.Collections.Generic;
 
 namespace DataAccessLayer.Models;
 
-public partial class User
+public partial class AppUser
 {
     public int UserId { get; set; }
 
-    public string FullName { get; set; } = null!;
+    public string? FullName { get; set; }
 
     public string? Phone { get; set; }
 
-    public int RoleId { get; set; }
+    public string? PasswordHash { get; set; }
 
-    public int AreaId { get; set; }
+    public int? RoleId { get; set; }
+
+    public int? AreaId { get; set; }
 
     public DateTime? CreatedAt { get; set; }
 
-    public virtual GeographicArea Area { get; set; } = null!;
+    public virtual GeographicArea? Area { get; set; }
 
     public virtual ICollection<Attachment> Attachments { get; set; } = new List<Attachment>();
+
+    public virtual ICollection<AuditLog> AuditLogs { get; set; } = new List<AuditLog>();
 
     public virtual ICollection<InventoryTransaction> InventoryTransactionConfirmedByNavigations { get; set; } = new List<InventoryTransaction>();
 
@@ -39,5 +43,5 @@ public partial class User
 
     public virtual ICollection<RescueTeamMember> RescueTeamMembers { get; set; } = new List<RescueTeamMember>();
 
-    public virtual Role Role { get; set; } = null!;
+    public virtual Role? Role { get; set; }
 }

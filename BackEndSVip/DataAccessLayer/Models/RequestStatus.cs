@@ -7,11 +7,11 @@ public partial class RequestStatus
 {
     public int StatusId { get; set; }
 
-    public string StatusName { get; set; } = null!;
+    public string? StatusName { get; set; }
 
     public string? Description { get; set; }
 
-    public bool IsFinal { get; set; }
+    public bool? IsFinal { get; set; }
 
     public virtual ICollection<RescueRequest> RescueRequests { get; set; } = new List<RescueRequest>();
 }

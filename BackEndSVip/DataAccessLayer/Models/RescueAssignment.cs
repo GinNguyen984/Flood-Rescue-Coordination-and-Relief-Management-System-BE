@@ -7,15 +7,15 @@ public partial class RescueAssignment
 {
     public int AssignmentId { get; set; }
 
-    public int RescueRequestId { get; set; }
+    public int? RescueRequestId { get; set; }
 
-    public int RescueTeamId { get; set; }
+    public int? RescueTeamId { get; set; }
 
-    public int ShiftId { get; set; }
+    public int? ShiftId { get; set; }
 
     public string? AssignmentStatus { get; set; }
 
-    public int AssignedBy { get; set; }
+    public int? AssignedBy { get; set; }
 
     public DateTime? AssignedAt { get; set; }
 
@@ -23,11 +23,11 @@ public partial class RescueAssignment
 
     public string? RejectReason { get; set; }
 
-    public virtual User AssignedByNavigation { get; set; } = null!;
+    public virtual AppUser? AssignedByNavigation { get; set; }
 
-    public virtual RescueRequest RescueRequest { get; set; } = null!;
+    public virtual RescueRequest? RescueRequest { get; set; }
 
-    public virtual RescueTeam RescueTeam { get; set; } = null!;
+    public virtual RescueTeam? RescueTeam { get; set; }
 
-    public virtual RescueShift Shift { get; set; } = null!;
+    public virtual RescueShift? Shift { get; set; }
 }

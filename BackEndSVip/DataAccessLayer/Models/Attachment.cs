@@ -7,7 +7,7 @@ public partial class Attachment
 {
     public int AttachmentId { get; set; }
 
-    public int RescueRequestId { get; set; }
+    public int? RescueRequestId { get; set; }
 
     public string? FileUrl { get; set; }
 
@@ -15,9 +15,9 @@ public partial class Attachment
 
     public DateTime? UploadedAt { get; set; }
 
-    public int UploadedBy { get; set; }
+    public int? UploadedBy { get; set; }
 
-    public virtual RescueRequest RescueRequest { get; set; } = null!;
+    public virtual RescueRequest? RescueRequest { get; set; }
 
-    public virtual User UploadedByNavigation { get; set; } = null!;
+    public virtual AppUser? UploadedByNavigation { get; set; }
 }

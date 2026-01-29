@@ -9,7 +9,7 @@ public partial class WarehouseInventory
 
     public int ReliefItemId { get; set; }
 
-    public int Quantity { get; set; }
+    public int? Quantity { get; set; }
 
     public virtual ReliefItem ReliefItem { get; set; } = null!;
 

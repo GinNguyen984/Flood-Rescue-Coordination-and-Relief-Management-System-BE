@@ -18,4 +18,6 @@ public partial class AuditLog
     public int? EntityId { get; set; }
 
     public DateTime? ActionAt { get; set; }
+
+    public virtual AppUser? Actor { get; set; }
 }

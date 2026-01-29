@@ -27,6 +27,7 @@ namespace BackEndSVip
 
             app.UseAuthorization();
 
+            app.UseAuthentication();
 
             app.MapControllers();
 
