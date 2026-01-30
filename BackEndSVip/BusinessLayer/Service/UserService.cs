@@ -99,7 +99,7 @@ namespace BusinessLayer.Service
             var exists = userList.Any(u => u.Phone == registerInfo.Phone);
             if (exists)
                 return false;
-            var passwordHash = BCrypt.Net.BCrypt.HashPassword(registerInfo.Password);
+            var passwordHash = HashPassword(registerInfo.Password);
             var user = new User
             {
                 Phone = registerInfo.Phone,
