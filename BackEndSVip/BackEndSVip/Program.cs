@@ -6,7 +6,9 @@ using DataAccessLayer.IRepository;
 using DataAccessLayer.Models;
 using DataAccessLayer.Repository;
 using System.Text.Json.Serialization;
-
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 namespace BackEndSVip
 {
     public class Program
@@ -41,6 +43,22 @@ namespace BackEndSVip
                 });
             });
 
+            //jwt 
+            #region 
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidAudience = builder.Configuration["Jwt:Audience"],
+                    ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                    ValidateIssuerSigningKey = true,
+                    ValidateLifetime = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+                };
+            });
+            #endregion
             //Auto Mapper t?i ? Nuget
             builder.Services.AddAutoMapper(cfg => { }, typeof(MapperConfigs));
 
@@ -58,8 +76,8 @@ namespace BackEndSVip
             //Dòng này ?? cho phép FE g?i API vào không b? brownser ch?n
             app.UseCors("AllowFE");
 
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.MapControllers();
 
