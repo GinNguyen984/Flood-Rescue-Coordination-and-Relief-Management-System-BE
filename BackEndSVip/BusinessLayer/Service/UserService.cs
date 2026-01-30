@@ -53,15 +53,17 @@ namespace BusinessLayer.Service
 
         public async Task<LoginResponseVM> LoginAsync(LoginVM loginInfo)
         {
+
             var userList = await _userRepository.GetAllAsync();
             var user = userList.FirstOrDefault(u => u.Phone == loginInfo.Phone);
+            var hashInputPassword = HashPassword(loginInfo.Password);
 
-            if (user == null || user.PasswordHash != loginInfo.Password)
+            if (user == null || user.PasswordHash != hashInputPassword)
             {
                 throw new Exception("Invalid phone or password");
             }
 
-            //Phu lam casi JWT xong thi ay cai GenerateJsonWeb laij nha
+            
             var token = JWTUtils.GenerateJsonWebToken(user, _configuration["Jwt:Key"], _configuration);
             return new LoginResponseVM
             {
