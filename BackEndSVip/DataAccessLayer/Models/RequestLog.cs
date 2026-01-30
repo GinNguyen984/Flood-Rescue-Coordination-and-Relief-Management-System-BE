@@ -15,7 +15,7 @@ public partial class RequestLog
 
     public DateTime? CreatedAt { get; set; }
 
-    public virtual AppUser? PerformedByNavigation { get; set; }
+    public virtual User? PerformedByNavigation { get; set; }
 
     public virtual RescueRequest? RescueRequest { get; set; }
 }

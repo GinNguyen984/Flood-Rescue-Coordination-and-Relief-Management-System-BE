@@ -13,5 +13,7 @@ public partial class Vehicle
 
     public string? VehicleStatus { get; set; }
 
+    public virtual ICollection<RescueAssignment> RescueAssignments { get; set; } = new List<RescueAssignment>();
+
     public virtual ICollection<RescueTeam> RescueTeams { get; set; } = new List<RescueTeam>();
 }

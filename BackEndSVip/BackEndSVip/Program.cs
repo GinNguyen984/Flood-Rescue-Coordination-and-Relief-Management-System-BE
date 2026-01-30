@@ -1,4 +1,12 @@
 
+using BusinessLayer.IService;
+using BusinessLayer.Mapper;
+using BusinessLayer.Service;
+using DataAccessLayer.IRepository;
+using DataAccessLayer.Models;
+using DataAccessLayer.Repository;
+using System.Text.Json.Serialization;
+
 namespace BackEndSVip
 {
     public class Program
@@ -8,11 +16,33 @@ namespace BackEndSVip
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddControllers()
+                    .AddJsonOptions(c => 
+                    c.JsonSerializerOptions.ReferenceHandler = 
+                    ReferenceHandler.IgnoreCycles);
 
-            builder.Services.AddControllers();
+            builder.Services.AddDbContext<RescueManagementDbContext>((config) => { });
+
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IUserService, UserService>();
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            //CORS
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowFE", builder =>
+                {
+                    builder.WithOrigins("http://localhost:5173")
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
+                });
+            });
+
+            //Auto Mapper t?i ? Nuget
+            builder.Services.AddAutoMapper(cfg => { }, typeof(MapperConfigs));
 
             var app = builder.Build();
 
@@ -25,8 +55,10 @@ namespace BackEndSVip
 
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+            //Dòng này ?? cho phép FE g?i API vào không b? brownser ch?n
+            app.UseCors("AllowFE");
 
+            app.UseAuthorization();
             app.UseAuthentication();
 
             app.MapControllers();

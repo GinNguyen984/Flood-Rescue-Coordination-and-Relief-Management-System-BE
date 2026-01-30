@@ -19,10 +19,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="IRepository\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Repository\" />
-  </ItemGroup>
-
 </Project>

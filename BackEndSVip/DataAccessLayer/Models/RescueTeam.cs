@@ -17,6 +17,8 @@ public partial class RescueTeam
 
     public virtual GeographicArea? Area { get; set; }
 
+    public virtual ICollection<PeriodicAidDistribution> PeriodicAidDistributions { get; set; } = new List<PeriodicAidDistribution>();
+
     public virtual ICollection<RescueAssignment> RescueAssignments { get; set; } = new List<RescueAssignment>();
 
     public virtual ICollection<RescueTeamMember> RescueTeamMembers { get; set; } = new List<RescueTeamMember>();

@@ -35,7 +35,7 @@ public partial class RescueRequest
 
     public virtual ICollection<Attachment> Attachments { get; set; } = new List<Attachment>();
 
-    public virtual AppUser? CitizenUser { get; set; }
+    public virtual User? CitizenUser { get; set; }
 
     public virtual ICollection<InventoryTransaction> InventoryTransactions { get; set; } = new List<InventoryTransaction>();
 

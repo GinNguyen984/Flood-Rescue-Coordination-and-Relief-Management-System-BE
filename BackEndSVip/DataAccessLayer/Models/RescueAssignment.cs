@@ -13,6 +13,8 @@ public partial class RescueAssignment
 
     public int? ShiftId { get; set; }
 
+    public int? VehicleId { get; set; }
+
     public string? AssignmentStatus { get; set; }
 
     public int? AssignedBy { get; set; }
@@ -23,11 +25,13 @@ public partial class RescueAssignment
 
     public string? RejectReason { get; set; }
 
-    public virtual AppUser? AssignedByNavigation { get; set; }
+    public virtual User? AssignedByNavigation { get; set; }
 
     public virtual RescueRequest? RescueRequest { get; set; }
 
     public virtual RescueTeam? RescueTeam { get; set; }
 
     public virtual RescueShift? Shift { get; set; }
+
+    public virtual Vehicle? Vehicle { get; set; }
 }

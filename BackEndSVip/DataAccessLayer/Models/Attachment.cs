@@ -19,5 +19,5 @@ public partial class Attachment
 
     public virtual RescueRequest? RescueRequest { get; set; }
 
-    public virtual AppUser? UploadedByNavigation { get; set; }
+    public virtual User? UploadedByNavigation { get; set; }
 }

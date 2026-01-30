@@ -11,5 +11,5 @@ public partial class Role
 
     public string? Description { get; set; }
 
-    public virtual ICollection<AppUser> AppUsers { get; set; } = new List<AppUser>();
+    public virtual ICollection<User> Users { get; set; } = new List<User>();
 }

@@ -19,5 +19,5 @@ public partial class AuditLog
 
     public DateTime? ActionAt { get; set; }
 
-    public virtual AppUser? Actor { get; set; }
+    public virtual User? Actor { get; set; }
 }

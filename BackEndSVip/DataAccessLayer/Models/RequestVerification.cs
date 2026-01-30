@@ -19,5 +19,5 @@ public partial class RequestVerification
 
     public virtual RescueRequest? RescueRequest { get; set; }
 
-    public virtual AppUser? VerifiedByNavigation { get; set; }
+    public virtual User? VerifiedByNavigation { get; set; }
 }

@@ -11,11 +11,11 @@ public partial class GeographicArea
 
     public int? ParentAreaId { get; set; }
 
-    public virtual ICollection<AppUser> AppUsers { get; set; } = new List<AppUser>();
-
     public virtual ICollection<GeographicArea> InverseParentArea { get; set; } = new List<GeographicArea>();
 
     public virtual GeographicArea? ParentArea { get; set; }
+
+    public virtual ICollection<PeriodicAidBeneficiary> PeriodicAidBeneficiaries { get; set; } = new List<PeriodicAidBeneficiary>();
 
     public virtual ICollection<ReliefWarehouse> ReliefWarehouses { get; set; } = new List<ReliefWarehouse>();
 
@@ -24,4 +24,6 @@ public partial class GeographicArea
     public virtual ICollection<RescueShift> RescueShifts { get; set; } = new List<RescueShift>();
 
     public virtual ICollection<RescueTeam> RescueTeams { get; set; } = new List<RescueTeam>();
+
+    public virtual ICollection<User> Users { get; set; } = new List<User>();
 }

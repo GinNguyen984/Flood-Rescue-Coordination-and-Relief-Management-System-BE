@@ -23,9 +23,9 @@ public partial class InventoryTransaction
 
     public string? Note { get; set; }
 
-    public virtual AppUser? ConfirmedByNavigation { get; set; }
+    public virtual User? ConfirmedByNavigation { get; set; }
 
-    public virtual AppUser? CreatedByNavigation { get; set; }
+    public virtual User? CreatedByNavigation { get; set; }
 
     public virtual ICollection<ReliefDistribution> ReliefDistributions { get; set; } = new List<ReliefDistribution>();
 

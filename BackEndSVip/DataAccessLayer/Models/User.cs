@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DataAccessLayer.Models;
 
-public partial class AppUser
+public partial class User
 {
     public int UserId { get; set; }
 
@@ -28,6 +28,10 @@ public partial class AppUser
     public virtual ICollection<InventoryTransaction> InventoryTransactionConfirmedByNavigations { get; set; } = new List<InventoryTransaction>();
 
     public virtual ICollection<InventoryTransaction> InventoryTransactionCreatedByNavigations { get; set; } = new List<InventoryTransaction>();
+
+    public virtual ICollection<PeriodicAidBeneficiary> PeriodicAidBeneficiaryCitizenUsers { get; set; } = new List<PeriodicAidBeneficiary>();
+
+    public virtual ICollection<PeriodicAidBeneficiary> PeriodicAidBeneficiarySelectedByAdmins { get; set; } = new List<PeriodicAidBeneficiary>();
 
     public virtual ICollection<RequestLog> RequestLogs { get; set; } = new List<RequestLog>();
 

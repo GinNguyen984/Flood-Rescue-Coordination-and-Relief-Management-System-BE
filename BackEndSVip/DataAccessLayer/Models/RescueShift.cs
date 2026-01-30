@@ -21,9 +21,9 @@ public partial class RescueShift
 
     public virtual GeographicArea? Area { get; set; }
 
-    public virtual AppUser? ClosedByNavigation { get; set; }
+    public virtual User? ClosedByNavigation { get; set; }
 
-    public virtual AppUser? OpenedByNavigation { get; set; }
+    public virtual User? OpenedByNavigation { get; set; }
 
     public virtual ICollection<RescueAssignment> RescueAssignments { get; set; } = new List<RescueAssignment>();
 }
