@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccessLayer.ViewModels;
+
 
 namespace BusinessLayer.IService
 {
@@ -14,5 +16,6 @@ namespace BusinessLayer.IService
         Task<UserVM> UpdateAsync(int id, UserAddVM userAddVM);
         Task<bool> DeleteAsync(int id);
         Task<LoginResponseVM> LoginAsync(LoginVM loginInfo);
+        Task<bool> RegisterAsync(RegisterVM registerInfo);
     }
 }
