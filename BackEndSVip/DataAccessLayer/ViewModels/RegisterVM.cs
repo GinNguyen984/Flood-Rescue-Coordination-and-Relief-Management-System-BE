@@ -10,6 +10,6 @@ namespace DataAccessLayer.ViewModels
     {
         public string Phone { get; set; }
         public string Password { get; set; }
-        public string Name { get; set; }  // hoặc FullName nếu bạn thích
+        public string Name { get; set; }
     }
 }

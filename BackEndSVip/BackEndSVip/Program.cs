@@ -59,7 +59,7 @@ namespace BackEndSVip
                 };
             });
             #endregion
-            //Auto Mapper t?i ? Nuget
+            
             builder.Services.AddAutoMapper(cfg => { }, typeof(MapperConfigs));
 
             var app = builder.Build();
@@ -73,7 +73,7 @@ namespace BackEndSVip
 
             app.UseHttpsRedirection();
 
-            //Dòng này ?? cho phép FE g?i API vào không b? brownser ch?n
+            
             app.UseCors("AllowFE");
 
             app.UseAuthentication();
