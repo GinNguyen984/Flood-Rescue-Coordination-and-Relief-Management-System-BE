@@ -53,13 +53,20 @@ namespace BusinessLayer.Service
 
         public async Task<LoginResponseVM> LoginAsync(LoginVM loginInfo)
         {
+
             var userList = await _userRepository.GetAllAsync();
             var user = userList.FirstOrDefault(u => u.Phone == loginInfo.Phone);
+            var hashInputPassword = HashPassword(loginInfo.Password);
 
-            if (user == null || user.PasswordHash != loginInfo.Password)
+            if (user == null || user.PasswordHash != hashInputPassword)
             {
                 throw new Exception("Invalid phone or password");
             }
+<<<<<<< HEAD
+=======
+
+            
+>>>>>>> 1ffca86d6fd928ba6c9f32026f38502493730bf9
             var token = JWTUtils.GenerateJsonWebToken(user, _configuration["Jwt:Key"], _configuration);
             return new LoginResponseVM
             {
@@ -89,5 +96,24 @@ namespace BusinessLayer.Service
                 return Convert.ToBase64String(hash);
             }
         }
+        public async Task<bool> RegisterAsync(RegisterVM registerInfo)
+        {
+            var userList = await _userRepository.GetAllAsync();
+            var exists = userList.Any(u => u.Phone == registerInfo.Phone);
+            if (exists)
+                return false;
+            var passwordHash = HashPassword(registerInfo.Password);
+            var user = new User
+            {
+                Phone = registerInfo.Phone,
+                FullName = registerInfo.Name,
+                PasswordHash = passwordHash,
+                CreatedAt = DateTime.UtcNow
+            };
+            await _userRepository.AddNewAsync(user);
+            return true;
+        }
+
+
     }
 }

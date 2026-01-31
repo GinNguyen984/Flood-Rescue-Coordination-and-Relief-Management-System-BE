@@ -22,7 +22,7 @@ namespace BackEndSVip.Controllers
             var loginResponse = await _userService.LoginAsync(loginInfo);
             if(loginResponse == null)
             {
-                return Unauthorized(new { message = "Invalid Phone or password" });
+                return Unauthorized(new { message = "Invalid Phone or password, Please Reinput" });
             }
 
             return Ok(loginResponse);

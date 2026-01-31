@@ -18,7 +18,7 @@ namespace BusinessLayer.Utils
 
         public static string GenerateJsonWebToken(this User user, string key, IConfiguration configuration)
         {
-            var role = user.Role;
+            var role = user.RoleId;
 
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
