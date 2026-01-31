@@ -1,6 +1,6 @@
 @BackEndSVip_HostAddress = http://localhost:5020
 
-GET {{BackEndSVip_HostAddress}}/weatherforecast/
+GET {{BackEndSVip_HostAddress}}/program/
 Accept: application/json
 
 ###

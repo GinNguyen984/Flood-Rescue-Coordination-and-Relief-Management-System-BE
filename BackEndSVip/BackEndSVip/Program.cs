@@ -24,11 +24,8 @@ namespace BackEndSVip
                     ReferenceHandler.IgnoreCycles);
 
             builder.Services.AddDbContext<RescueManagementDbContext>((config) => { });
-
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IUserService, UserService>();
-
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
@@ -61,10 +58,7 @@ namespace BackEndSVip
             #endregion
             
             builder.Services.AddAutoMapper(cfg => { }, typeof(MapperConfigs));
-
             var app = builder.Build();
-
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -72,15 +66,10 @@ namespace BackEndSVip
             }
 
             app.UseHttpsRedirection();
-
-            
             app.UseCors("AllowFE");
-
             app.UseAuthentication();
             app.UseAuthorization();
-
             app.MapControllers();
-
             app.Run();
         }
     }

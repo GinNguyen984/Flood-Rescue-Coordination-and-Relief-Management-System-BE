@@ -19,9 +19,9 @@ namespace BackEndSVip.Controllers
             var success = await _userService.RegisterAsync(registerInfo);
             if (!success)
             {
-                return Conflict(new { message = "Phone number already existed." });
+                return Conflict(new { message = "Phone number has been used!!!" });
             }
-            return Ok(new { message = "Register Succeedfully." });
+            return Ok(new { message = "Register successfully" });
         }
     }
 }
