@@ -53,10 +53,12 @@ namespace BusinessLayer.Service
 
         public async Task<LoginResponseVM> LoginAsync(LoginVM loginInfo)
         {
+
             var userList = await _userRepository.GetAllAsync();
             var user = userList.FirstOrDefault(u => u.Phone == loginInfo.Phone);
+            var hashInputPassword = HashPassword(loginInfo.Password);
 
-            if (user == null || user.PasswordHash != loginInfo.Password)
+            if (user == null || user.PasswordHash != hashInputPassword)
             {
                 throw new Exception("Invalid phone or password");
             }
@@ -89,5 +91,24 @@ namespace BusinessLayer.Service
                 return Convert.ToBase64String(hash);
             }
         }
+        public async Task<bool> RegisterAsync(RegisterVM registerInfo)
+        {
+            var userList = await _userRepository.GetAllAsync();
+            var exists = userList.Any(u => u.Phone == registerInfo.Phone);
+            if (exists)
+                return false;
+            var passwordHash = HashPassword(registerInfo.Password);
+            var user = new User
+            {
+                Phone = registerInfo.Phone,
+                FullName = registerInfo.Name,
+                PasswordHash = passwordHash,
+                CreatedAt = DateTime.UtcNow
+            };
+            await _userRepository.AddNewAsync(user);
+            return true;
+        }
+
+
     }
 }
