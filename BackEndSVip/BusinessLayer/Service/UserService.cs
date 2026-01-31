@@ -60,8 +60,6 @@ namespace BusinessLayer.Service
             {
                 throw new Exception("Invalid phone or password");
             }
-
-            
             var token = JWTUtils.GenerateJsonWebToken(user, _configuration["Jwt:Key"], _configuration);
             return new LoginResponseVM
             {
