@@ -13,7 +13,6 @@ namespace BusinessLayer.Mapper
         {
             CreateUserMap();
         }
-
         partial void CreateUserMap();
     }
 }
